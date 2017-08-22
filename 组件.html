@@ -1,0 +1,162 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>Document</title>
+ 	<style>
+ 		* {
+ 			padding: 0;
+ 			margin: 0;
+ 		}
+ 		.wrapper span {
+ 			float: left;
+ 			margin-left: 10px;
+ 			cursor: pointer;
+ 		}
+ 		
+ 		.wrapper .first{
+ 			display: none;
+ 		}
+ 		.wrapper ul li {
+ 			float: left;
+ 			list-style: none;
+ 			margin-left: 10px;
+			cursor: pointer;
+ 		}
+		.wrapper ul a {
+			text-decoration: none;
+		}
+		ul::after {
+			content: "";
+			clear: both;
+			display: block;
+		}
+		.wrapper::after {
+			content: "";
+			clear: both;
+			display: block;
+		}
+		.wrapper ul::after {
+			content: "";
+			clear: both;
+			display: block;
+		}
+		.ul_wrapper {
+			float: left;
+		}
+		.content {
+			margin-top: 50px;
+			font-size: 40px;
+			height: 40px;
+			line-height: 40px;
+		}
+ 	</style>
+ </head>
+ <body>
+ 	<div class="wrapper">
+		<span class="first">首页</span>
+		<span class="prev">上一页</span>
+ 		<div class="ul_wrapper">
+ 			<ul><ul>
+ 		</div>
+		<span class="next">下一页</span>
+		<span class="last">尾页</span>
+ 	</div>
+ 	<div class="content"></div>
+ 	<script>
+ 		var oUl = document.getElementsByTagName('ul')[0];
+ 		var first = document.getElementsByClassName('first')[0];
+ 		var prev = document.getElementsByClassName('prev')[0];
+ 		var next = document.getElementsByClassName('next')[0];
+ 		var last = document.getElementsByClassName('last')[0];
+ 		var aco = document.getElementsByClassName('a_page');
+ 		var lico = document.getElementsByClassName('li_page');
+ 		var oContent = document.getElementsByClassName('content')[0];
+ 		paging(0, 9, function () {});
+		aco[0].innerText = 1;
+		oContent.innerHTML = 1;
+ 		first.onclick = function () {//首页事件注册
+ 			paging(0, 9, function () {});
+ 			aco[0].innerText = 1;
+ 			oContent.innerHTML = 1;
+ 			first.style.display = 'none';
+ 		}
+ 		last.onclick = function () {//尾页事件注册
+ 			paging(19, 28, function () {});
+ 			aco[8].innerText = 28;
+ 			oContent.innerHTML = 28;
+ 			first.style.display = 'inline-block';
+ 		}
+ 		prev.onclick = function () {//上一页事件注册
+ 			if(aco[0].innerText != 1) {
+ 				for(var i = 0; i < aco.length; i ++) {
+ 					if(parseInt(aco[i].innerText)) {
+ 						var run = change(Number(aco[i].innerText), aco[i - 1], function(){} , -1);
+ 						run();
+ 						break;
+ 					}
+ 				}
+ 			}
+ 		}
+ 		next.onclick = function () {//下一页事件注册
+ 			if(aco[8].innerText != 28) {
+ 				for(var i = 0; i < aco.length; i ++) {
+ 					if(parseInt(aco[i].innerText)) {
+ 						var run = change(Number(aco[i].innerText), aco[i + 1], function(){}, 1);
+ 						run();
+ 						break;
+ 					}
+ 				}
+ 			}
+ 		}
+
+ 		function paging(start, stop) {//产生新页码
+ 			oUl.innerHTML = '';
+ 			var tf = document.createDocumentFragment();
+				for(var i = start; i < stop; i ++) {
+	 				var li = createEle(tf, 'li');
+	 				var a = createEle(li, 'a');
+	 				li.className = "li_page";
+	 				a.className = "a_page";
+	 				a. innerText = "[" + (i + 1) + "]";
+	 				(function (j, newA) {
+	 					li.onclick = change(j, newA, function() {}, 1);
+	 				}(i, a))
+	 			}
+ 			oUl.appendChild(tf);
+ 		}
+
+ 		function createEle(parent, eleName) {//创造新元素
+ 			var newEle = document.createElement(eleName);
+ 			parent.appendChild(newEle);
+ 			return newEle;
+ 		}
+ 		function change(oJ, newElement, callBack, newNum) {//更换页码
+	 						return function () {
+		 						oContent.innerHTML = oJ + newNum;	 						
+		 							 					
+		 						for (var q = 0; q < aco.length; q ++) {
+		 							if(parseInt(aco[q].innerText)) {
+		 								aco[q].innerText = "[" + aco[q].innerText + "]";
+		 							}
+		 						}	 						
+		 						newElement.innerText = oJ + newNum;
+		 						if(aco[0].innerText == 1) {
+		 							first.style.display = 'none';
+		 						}else{
+		 							first.style.display = 'block';
+		 						}
+		 						if (newElement.innerText <= 5) {
+		 							paging(0, 9, function () {});
+		 							aco[newElement.innerText - 1].innerText = newElement.innerText;
+		 						}
+		 						if(newElement.innerText > 5 && newElement.innerText < 25) {
+		 							paging(newElement.innerText - 5, Number(newElement.innerText) + 4, function () {});
+		 							aco[4].innerText = newElement.innerText;
+		 						}
+		 						callBack();
+	 						}
+		}
+ 	</script>
+ </body>
+ </html>

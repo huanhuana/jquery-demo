@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		.wrapper {
+			position: relative;
+			width: 1190px;
+			height: 310px;
+			margin: 0 auto;
+			overflow: hidden;
+			cursor: pointer;
+		}
+		.btn_left {
+			cursor: pointer;
+		    z-index: 999;
+		    position: absolute;
+		    top: 50%;
+		    width: 45px;
+		    height: 45px;
+		    margin-top: -43px;
+		    left: 7px;
+		    background: url(http://r1.ykimg.com/0510000051AD63E96714C04A1400547A) no-repeat;
+		}
+		.btn_right {
+			cursor: pointer;
+		    z-index: 999;
+		    position: absolute;
+		    top: 50%;
+		    width: 45px;
+		    height: 45px;
+		    margin-top: -43px;
+		    right: 7px;
+		    background: url(http://r1.ykimg.com/0510000051AD63F56714C04A1305CFEF) no-repeat;
+		}
+		li {
+			position: absolute;
+			width: 530px;
+			height: 224px;
+			background: black;
+		}
+		.active1 {
+			/*left: -530px;
+			height: 100px;
+			top: 80px;*/
+			animation: move1 10s linear infinite;
+		}
+		.active2 {
+			/*left: 0;
+			top: 20px;
+			z-index: 2;*/
+			animation: move2 10s linear infinite;
+		}
+		.active3 {
+			/*width: 640px;
+			height: 270px;
+			left: 275px;
+			z-index: 3;*/
+			animation: move3 10s linear infinite;
+
+		}
+		.active4 {
+			/*left: 660px;
+			top: 20px;
+			z-index: 2;*/
+			animation: move4 10s linear infinite;
+
+		}
+		.active5 {
+			/*left: 1190px;
+			height: 100px;
+			top: 80px;*/
+			animation: move5 10s linear infinite;
+
+		}
+		.active6 {
+			animation: move6 10s linear infinite;
+
+		}
+		.active7 {
+			/*top: 80px;
+			height: 100px;
+			left: 1190px;*/
+			animation: move7 10s linear infinite;
+
+		}
+		img {
+			height: 100%;
+			width: 100%;		    
+		    vertical-align: middle;
+		}
+		/*.active1 img, .active3 img {
+			opacity: 0.5;
+		}*/
+		
+		@keyframes move1{
+			0%,4% {
+				left: -530px;
+				height: 100px;
+				width: 530px;
+				top: 80px;
+				z-index: 1;
+			}
+			15%,19% {
+				left: -1060px;
+				z-index: 0;
+				height: 0;
+				width: 0;
+			}
+			30%,34% {
+				left: 1720px;
+				z-index: 0;
+			}
+			45%,49% {
+				left: 1190px;
+				z-index: 1;
+				height: 100px;
+				width: 530px;
+			}
+			60%,64% {
+				left: 660px;
+				top: 20px;
+				z-index: 2;
+				height: 224px;
+				width: 530px;
+			}
+			75%,79% {
+				top: 0;
+				width: 640px;
+				height: 270px;
+				left: 275px;
+				z-index: 3;
+			}
+			90%,94% {
+				left: 0;
+				top: 20px;
+				z-index: 2;
+				height: 224px;
+				width: 530px;
+			}
+			96%,100% {
+				left: -530px;
+				height: 100px;
+				top: 80px;
+				z-index: 1;
+			}
+		}
+		@keyframes move2{
+			0%,4% {
+				left: 0;
+				top: 20px;
+				height: 224px
+				width:530px;
+				z-index: 2;
+			}
+			15%,19% {
+				left: -530px;
+				height: 100px;
+				width: 530px;
+				top: 80px;
+				z-index: 1;
+			}
+			30%,34% {
+				left: -1060px;
+				height: 0;
+				width: 0;
+				z-index: 0;
+			}
+			45%,49% {
+				left: 1720px;
+				z-index: 0;
+			}
+			60%,64% {
+				left: 1190px;
+				z-index: 1;
+				top: 80px;
+				height: 100px;
+				width: 530px;
+			}
+			75%,79% {
+				left: 660px;
+				top: 20px;
+				z-index: 2;
+				height: 224px;
+				width: 530px;
+			}
+			90%,94% {
+				top: 0;
+				width: 640px;
+				height: 270px;
+				left: 275px;
+				z-index: 3;
+			}
+			96%,100% {
+				left: 0;
+				top: 20px;
+				z-index: 2;
+				height: 224px;
+				width: 530px;
+			}
+		}
+		@keyframes move3{
+			45%,49% {
+				left: -1060px;
+				z-index: 0;
+				height: 0;
+				width: 0;
+			}
+			60%,64% {
+				left: 1720px;
+				z-index: 0;
+
+			}
+			75%,79% {
+				left: 1190px;
+				z-index: 1;
+				top: 80px;
+				height: 100px;
+				width: 530px;
+			}
+			90%,94% {
+				left: 660px;
+				top: 20px;
+				z-index: 2;
+				height: 224px;
+				width: 530px;
+			}
+			96%,100% {
+				top: 0px;
+				width: 640px;
+				height: 270px;
+				left: 275px;
+				z-index: 3;
+			}
+			0%,4% {
+				top: 0px;
+				width: 640px;
+				height: 270px;
+				left: 275px;
+				z-index: 3;
+			}
+			15%,19% {
+				left: 0;
+				top: 20px;
+				z-index: 2;
+				height: 224px;
+				width: 530px;
+			}
+			30%,34% {
+				left: -530px;
+				height: 100px;
+				width: 530px;
+				top: 80px;
+				z-index: 1;
+			}
+		}
+		@keyframes move4{
+			60%,64% {
+				left: -1060px;
+				z-index: 0;
+				height: 0;
+				width: 0;
+			}
+			75%,79% {
+				left: 1720px;
+				z-index: 0;
+			}
+			90%,94% {
+				left: 1190px;
+				z-index: 1;
+				height: 100px;
+				width: 530px;
+			}
+			96%,100% {
+				left: 660px;
+				top: 20px;
+				z-index: 2;
+				height: 224px;
+				width: 530px;
+			}
+			0%,4% {
+				left: 660px;
+				top: 20px;
+				z-index: 2;
+				height: 224px;
+				width: 530px;
+			}
+			15%,19% {
+				top: 0px;
+				width: 640px;
+				height: 270px;
+				left: 275px;
+				z-index: 3;
+			}
+			30%,34% {
+				left: 0;
+				top: 20px;
+				z-index: 2;
+				height: 224px;
+				width: 530px;
+			}
+			45%,49% {
+				left: -530px;
+				height: 100px;
+				width: 530px;
+				top: 80px;
+				z-index: 1;
+			}
+		}
+		@keyframes move5{
+			75%,79% {
+				left: -1060px;
+				z-index: 0;
+				height: 0;
+				width: 0;
+			}
+			90%,94% {
+				left: 1720px;
+				z-index: 0;
+			}
+			96%,100% {
+				left: 1190px;
+				z-index: 1;
+				top: 80px;
+				height: 100px;
+				width: 530px;
+			}
+			0%,4% {
+				left: 1190px;
+				z-index: 1;
+				top: 80px;
+				height: 100px;
+				width: 530px;
+			}
+			15%,19% {
+				left: 660px;
+				top: 20px;
+				z-index: 2;
+				height: 224px;
+			}
+			30%,34% {
+				top: 0;
+				width: 640px;
+				height: 270px;
+				left: 275px;
+				z-index: 3;
+			}
+			45%,49% {
+				left: 0;
+				top: 20px;
+				z-index: 2;
+				height: 224px;
+				width: 530px;
+			}
+			60%,64% {
+				left: -530px;
+				height: 100px;
+				width: 530px;
+				top: 80px;
+				z-index: 1;
+			}
+		}	
+		@keyframes move6{
+			90%,94% {
+				left: -1060px;
+				z-index: 0;
+				height: 0;
+				width: 0;
+			}
+			96%,100% {
+				left: 1720px;
+				z-index: 0;
+				height: 0;
+				width: 0;
+			}
+			0%,4% {
+				left: 1720px;
+				z-index: 0;
+				top:80px;
+				height: 0;
+				width: 0;
+			}
+			15%,19% {
+				left: 1190px;
+				z-index: 1;
+				top: 80px;
+				height: 100px;
+				width: 530px;
+			}
+			30%,34% {
+				left: 660px;
+				top: 20px;
+				z-index: 2;
+				height: 224px;
+			}
+			45%,49% {
+				top: 0;
+				width: 640px;
+				height: 270px;
+				left: 275px;
+				z-index: 3;
+			}
+			60%,64% {
+				left: 0;
+				top: 20px;
+				z-index: 2;
+				height: 224px;
+				width: 530px;
+			}
+			75%,79% {
+				left: -530px;
+				height: 100px;
+				width: 530px;
+				top: 80px;
+				z-index: 1;
+			}
+		}	
+		@keyframes move7{
+			96%,100% {
+				left: -1060px;
+				z-index: 0;
+				height: 0;
+				width: 0;
+			}
+			0%,4% {
+				top: 80px;
+				left: -1060px;
+				z-index: 0;
+				height: 0;
+				width: 0;
+			}
+			15%,19% {
+				left: 1720px;
+				z-index: 0;
+			}
+			30%,34% {
+				left: 1190px;
+				z-index: 1;
+				height: 100px;
+				width: 530px;
+			}
+			45%,49% {
+				left: 660px;
+				top: 20px;
+				z-index: 2;
+				height: 224px;
+			}
+			60%,64% {
+				top: 0;
+				width: 640px;
+				height: 270px;
+				left: 275px;
+				z-index: 3;
+			}
+			75%,79% {
+				left: 0;
+				top: 20px;
+				z-index: 2;
+				height: 224px;
+				width: 530px;
+			}
+			90%,94% {
+				left: -530px;
+				height: 100px;
+				width: 530px;
+				top: 80px;
+				z-index: 1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<script src="jquery-3.1.1.js"></script>
+	<div class="wrapper">
+		<div class="btn_left"></div>
+		<div class="btn_right"></div>
+		<ul>
+			<li class="active1">
+				<img src="http://r1.ykimg.com/0510000058AFBD81ADC0AE05590CE1B2" alt="三生三世十里桃花">
+			</li>
+			<li class="active2">
+				<img src="http://r1.ykimg.com/0510000058AD4438ADB91203F70619F5" alt="热血长安 第一季">
+			</li>
+			<li class="active3">
+				<img src="http://r1.ykimg.com/0510000058AF0863AD9E07055F0096CD" alt="我的狐仙老婆 第一季">
+			</li>
+			<li class="active4">
+				<img src="http://r1.ykimg.com/0510000058AAC348ADC0B003FC0B5417" alt="奇星记">
+			</li>
+			<li class="active5">
+				<img src="http://r1.ykimg.com/0510000058B3A063ADB91205A302A203" alt="校花前传之很纯很暧昧">
+			</li>
+			<li class="active6">
+				<img src="http://r1.ykimg.com/0510000058A2A9EAADB91203FA08FF61" alt="周末父母">
+			</li>
+			<li class="active7">
+				<img src="http://r1.ykimg.com/0510000058A15513ADC0AE03F704F97C" alt="大明王朝1566">
+			</li>
+		</ul>
+	</div>
+	<script>
+		$('.wrapper').on('mouseenter', function() {
+			console.log('a');
+			$('li').css('animation-play-state', 'paused');
+			$(this).on('mouseleave', function() {
+				$('li').css('animation-play-state', 'running');
+			})
+		})
+		$('.btn_right').on('click', function () {
+			for(var i = 0; i < 7; i ++) {
+				$('li')[i].style.animation = 'move' + (i + 1) +' 5s linear infinite';
+			}
+			// $('.wrapper').trigger('mouseenter');
+			
+			setTimeout(function() {
+				for(var j = 0; j < 7; j ++) {
+					$('li')[j].style.animation = 'move' + (j + 1) +' 10s linear infinite';
+				}	
+			},500)
+				$('.wrapper').trigger('mouseenter');
+		})
+	</script>
+</body>
+</html>
